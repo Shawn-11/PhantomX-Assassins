@@ -6,7 +6,7 @@ from ACL_FLL_v04_test import *
 ################## Shared and local constants ##################
 
 # Adapter configuration: (LeftPower, RightPower, LeftLimit, RightLimit)
-ROUTE_ADAPTER_POWER = (0, 0, 30, 30)
+ROUTE_ADAPTER_POWER = (40, -40, 30, 30)
 
 # Route-Specific PID Gains
 STR_KP_CUSTOM = 1.5
@@ -33,10 +33,21 @@ def Route6(laura):
     laura.hub_status_light(Color.MAGENTA)
 
     """ Start your code here """
-    laura.wall_square()
-
-
-
+    # Step 1 - Go to brush area
+    laura.wall_square(power=20,duration=200)
+    laura.gyro_acc(-90,915,decel_dist=130,stop=True)
+    laura.gyro_acc(50,40,decel_dist=130,stop=True)
+    laura.adapter_motor_degree(RIGHT_ADAPTER,300,150,wait_complete=False)
+    laura.gyro_lock_turn(RIGHT_DRIVE,-90,True)
+    laura.adapter_motor_degree(LEFT_ADAPTER,-300,50,wait_complete=False)
+    laura.gyro_degree(30,145,-93)
+    laura.adapter_motor_degree(LEFT_ADAPTER,300,60,wait_complete=False)
+    laura.adapter_motor_degree(RIGHT_ADAPTER,-300,150,wait_complete=True)
+    laura.gyro_degree(-50,260,-93)
+    laura.gyro_point_turn(0)
+    laura.gyro_acc(90,550,decel_dist=0,stop=False)
+    laura.move_curve_angle(200,90,650,900,Stop.BRAKE,True)
+    
     """ Route end """
     elapsed_time = routeTimer.time() / 1000
     print(f"Total Time: {elapsed_time:.2f} seconds")
@@ -48,7 +59,7 @@ def Route6(laura):
 if __name__ == "__main__":
     test = Laura()
 
-    while not Button.RIGHT in test.hub_button_pressed():
+    while not Button.BLUETOOTH in test.hub_button_pressed():
         test.unregulated_adapter(*ROUTE_ADAPTER_POWER)
     
     test.adapter_motor_brake(LEFT_ADAPTER)

@@ -6,7 +6,7 @@ from ACL_FLL_v04_test import *
 ################## Shared and local constants ##################
 
 # Adapter configuration: (LeftPower, RightPower, LeftLimit, RightLimit)
-ROUTE_ADAPTER_POWER = (0, 0, 30, 30)
+ROUTE_ADAPTER_POWER = (40, -40, 30, 30)
 
 # Route-Specific PID Gains
 STR_KP_CUSTOM = 1.5
@@ -33,8 +33,30 @@ def Route2(laura):
     laura.hub_status_light(Color.MAGENTA)
 
     """ Start your code here """
+    # Step 1 - Go to forge
     laura.wall_square()
+    laura.gyro_lock_turn(RIGHT_DRIVE,angle= -22 ,stop=False)
+    laura.gyro_acc(power= 90 , distance= 720 , angle= -22 , decel_dist=120)
+    laura.gyro_point_turn(angle= 46)   # < take noted this angle
+    laura.adapter_motor_seconds(RIGHT_ADAPTER, speed= 200 , duration= 1200,stop_method=Stop.BRAKE,wait_complete=False)
+    wait(400)
+    laura.gyro_degree(power= 60 , degree= 155, angle= 46 , stop= False)
+    laura.gyro_time(power= 40 ,duration= 1000 , angle= 46)
 
+    # # Step 2 - Solve mission
+
+    laura.adapter_motor_seconds(LEFT_ADAPTER, speed= -1000 , duration= 1000 , stop_method=Stop.HOLD)
+    laura.adapter_motor_seconds(LEFT_ADAPTER,speed= 1000 , duration= 450 , wait_complete= False)
+    # laura.adapter_motor_seconds(RIGHT_ADAPTER,speed= -100 , duration= 300)
+    laura.adapter_motor_seconds(RIGHT_ADAPTER, speed= -200 , duration= 1200)
+    wait(150)
+    laura.adapter_motor_seconds(LEFT_ADAPTER,speed= 1000 , duration= 800 , wait_complete= False)
+    # # Step 3 - Back to base
+    laura.gyro_acc(power= -70 , distance= 120 ,angle= 46 , decel_dist= 0 , stop= False)
+    laura.adapter_motor_seconds(LEFT_ADAPTER,speed= 1000 , duration= 1250 , wait_complete= False)
+    laura.gyro_point_turn(angle= -20 , stop= False)
+    laura.gyro_acc(power= -90 , distance= 670 , angle= -20,stop=False)
+    laura.gyro_lock_turn(RIGHT_DRIVE,angle= 0 ,stop=False)
 
 
     """ Route end """
@@ -48,7 +70,7 @@ def Route2(laura):
 if __name__ == "__main__":
     test = Laura()
 
-    while not Button.RIGHT in test.hub_button_pressed():
+    while not Button.BLUETOOTH in test.hub_button_pressed():
         test.unregulated_adapter(*ROUTE_ADAPTER_POWER)
     
     test.adapter_motor_brake(LEFT_ADAPTER)

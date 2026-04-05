@@ -6,7 +6,7 @@ from ACL_FLL_v04_test import *
 ################## Shared and local constants ##################
 
 # Adapter configuration: (LeftPower, RightPower, LeftLimit, RightLimit)
-ROUTE_ADAPTER_POWER = (0, 0, 30, 30)
+ROUTE_ADAPTER_POWER = (-40, 0, 30, 30)
 
 # Route-Specific PID Gains
 STR_KP_CUSTOM = 1.5
@@ -33,8 +33,20 @@ def Route3(laura):
     laura.hub_status_light(Color.MAGENTA)
 
     """ Start your code here """
+    # Step 1 - Go to mountain
     laura.wall_square()
+    laura.gyro_acc(power= 80 , distance= 380 , decel_dist= 0, stop=False)
+    laura.gyro_time(power= 40 ,duration= 700)
+    
 
+    # Step 2 - solve mission
+    for i in range(4):
+        laura.adapter_motor_seconds(LEFT_ADAPTER, speed= 750 , duration= 600 , stop_method=Stop.COAST)
+        laura.adapter_motor_seconds(LEFT_ADAPTER, speed= -700 , duration= 500 , stop_method=Stop.COAST)
+        laura.encoder_time(left_power= 30 , right_power= 20 , duration= 200,stop=False)
+
+    # Step 3 - Back to base
+    laura.gyro_acc(power= -80 , distance= 370,stop=False)
 
 
     """ Route end """
@@ -48,7 +60,7 @@ def Route3(laura):
 if __name__ == "__main__":
     test = Laura()
 
-    while not Button.RIGHT in test.hub_button_pressed():
+    while not Button.BLUETOOTH in test.hub_button_pressed():
         test.unregulated_adapter(*ROUTE_ADAPTER_POWER)
     
     test.adapter_motor_brake(LEFT_ADAPTER)
