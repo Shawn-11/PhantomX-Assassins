@@ -33,14 +33,14 @@ LEFT_DRIVE = "left_drive"
 RIGHT_DRIVE = "right_drive"
 LEFT_ADAPTER = "left_adapter"
 RIGHT_ADAPTER = "right_adapter"
-# LEFT_COLOUR = "left_colour"
+LEFT_COLOUR = "left_colour"
 RIGHT_COLOUR = "right_colour"
 
 class Laura():
     def __init__(self):
         
         self._hub = PrimeHub(top_side=Axis.Z, front_side=Axis.Y)
-        # self._colour_A = ColorSensor(Port.A)
+        self._colour_A = ColorSensor(Port.A)
         self._colour_B = ColorSensor(Port.B)
         self._left_adapter = Motor(port=Port.C, positive_direction=Direction.CLOCKWISE, gears=[20,20]) 
         self._right_adapter = Motor(port=Port.D, positive_direction=Direction.CLOCKWISE, gears=[20,20]) 
@@ -54,7 +54,7 @@ class Laura():
 
         # STRING-TO-HARDWARE MAPPINGS
         self._sensor_map = {
-            # LEFT_COLOUR: self._colour_A,
+            LEFT_COLOUR: self._colour_A,
             RIGHT_COLOUR: self._colour_B
         }
 
