@@ -33,7 +33,7 @@ def Route4(laura: Laura):
     laura.hub_status_light(Color.MAGENTA)
 
     """ Start your code here """
-    
+
     
 
 
