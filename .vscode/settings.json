@@ -2,5 +2,5 @@
     "github.copilot.enable": {
         "*": false
     },
-    "python.analysis.typeCheckingMode": "off"
+    "editor.inlayHints.enabled": "off"
 }
