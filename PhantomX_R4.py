@@ -24,7 +24,7 @@ LF_KD_CUSTOM = 0.1
 # Blue base - Robot right wheel align 1st line from right
 # Mission - Mountain rock
 
-def Route4(laura):
+def Route4(laura: Laura):
 
     print("\n--- Starting Route 4 ---")
     routeTimer = StopWatch()
@@ -33,7 +33,8 @@ def Route4(laura):
     laura.hub_status_light(Color.MAGENTA)
 
     """ Start your code here """
-    laura.wall_square()
+    
+    
 
 
 

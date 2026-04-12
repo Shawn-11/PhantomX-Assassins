@@ -24,7 +24,7 @@ LF_KD_CUSTOM = 0.1
 # Blue base - Robot right wheel align 1st line from right
 # Mission - Mountain rock
 
-def Route7(laura):
+def Route7(laura: Laura):
 
     print("\n--- Starting Route 7 ---")
     routeTimer = StopWatch()
