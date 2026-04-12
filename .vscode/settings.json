@@ -1,6 +1,7 @@
 {
     "github.copilot.enable": {
         "*": false
-    },
-    "editor.inlayHints.enabled": "off"
+    },     
+    "python.analysis.inlayHints.functionReturnTypes": false,
+    "python.analysis.inlayHints.variableTypes": false
 }
