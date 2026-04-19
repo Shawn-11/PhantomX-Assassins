@@ -33,7 +33,6 @@ def Route1(laura: Laura):
     laura.hub_status_light(Color.MAGENTA)
 
     """ Start your code here """
-    # Step 1 - Go to market
     laura.wall_square()
     laura.gyro_acc(power= 60 , distance= 80 , angle= 0 , decel_dist=0 , stop=False) 
     laura.move_curve_angle(20,-42,500,600,Stop.BRAKE,100)
