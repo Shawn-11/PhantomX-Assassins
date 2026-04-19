@@ -74,7 +74,7 @@ class Laura():
             "KD_GYRO": 0.2,
             "KI_GYRO": 0.0005,
             "KP_GYROPT": 3.5,
-            "KD_GYROPT": 0.4,
+            "KD_GYROPT": 0.68,
             "KP_GYROLT": 5.0,
             "KD_GYROLT": 0.9,
             "KP_FAST": 0.4,
@@ -592,9 +592,11 @@ class Laura():
 
     def gyro_point_turn(self, angle, stop=True, accel_dist=10, decel_dist=20):
         self._gyro_turn(angle, None, stop, self._pid["KP_GYROPT"], self._pid["KD_GYROPT"], 40, 90, accel_dist, decel_dist)
+        print(f"Point Turn Gyro: {self._get_gyro_angle()}")
 
     def gyro_lock_turn(self, port, angle, stop=True, accel_dist=2, decel_dist=2):
         self._gyro_turn(angle, port, stop, self._pid["KP_GYROLT"], self._pid["KD_GYROLT"], 40, 90, decel_dist, decel_dist)
+        print(f"Lock Turn Gyro: {self._get_gyro_angle()}")
 
     # ==========================================
     # LINE FOLLOW
