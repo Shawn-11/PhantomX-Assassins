@@ -34,6 +34,7 @@ def Route5(laura: Laura):
 
     """ Start your code here """
     laura.wall_square()
+    
 
 
 
