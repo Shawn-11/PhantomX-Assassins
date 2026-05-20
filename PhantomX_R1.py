@@ -6,7 +6,7 @@ from ACL_FLL_v04_test import *
 ################## Shared and local constants ##################
 
 # Adapter configuration: (LeftPower, RightPower, LeftLimit, RightLimit)
-ROUTE_ADAPTER_POWER = (-40, -40, 30, 30)
+ROUTE_ADAPTER_POWER = (40, 80, 30, 30)
 
 # Route-Specific PID Gains
 STR_KP_CUSTOM = 1.5
@@ -40,15 +40,15 @@ def Route1(laura: Laura):
     laura.gyro_time(power= 55 , duration= 820 , angle= -43)
 
     # Step 2 - Solve mission
-    laura.adapter_motor_seconds(LEFT_ADAPTER,speed= 600 , duration= 800, stop_method=Stop.COAST, wait_complete=False)
-    laura.adapter_motor_seconds(RIGHT_ADAPTER, speed= 400 , duration= 1000 , stop_method=Stop.HOLD)
+    laura.adapter_motor_seconds(LEFT_ADAPTER,speed= -600 , duration= 800, stop_method=Stop.COAST, wait_complete=False)
+    laura.adapter_motor_seconds(RIGHT_ADAPTER, speed= -400 , duration= 1000 , stop_method=Stop.HOLD)
 
 
     # Step 3 - Pull market back
     laura.gyro_time(-60,450,angle=-44)
-    laura.adapter_motor_seconds(RIGHT_ADAPTER,speed= -850 , duration= 700, stop_method=Stop.HOLD, wait_complete=False)
-    laura.adapter_motor_seconds(LEFT_ADAPTER, speed= -550 , duration= 600, wait_complete=False)
-    wait(700)
+    laura.adapter_motor_seconds(RIGHT_ADAPTER,speed= 1000 , duration= 1000, stop_method=Stop.HOLD, wait_complete=False)
+    laura.adapter_motor_seconds(LEFT_ADAPTER, speed= 550 , duration= 600, wait_complete=False)
+    wait(800)
 
     # Step 4 - Back to base
     laura.gyro_acc(power= -80 , distance= 200 , angle= -44 , accel_dist=80,decel_dist= 0 , stop= False)
