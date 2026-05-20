@@ -23,8 +23,8 @@ from pybricks.tools import wait, StopWatch
 AXLE_TRACK = 146   # If robot turn too less, increase axle_track and vice versa
 WHEEL_SIZE = 62.7   # If robot drives too far, increase wheel_size and vice versa
 
-LOW = 5  # Default value for the darkest line (0-100)
-HIGH = 95  # Default value for the brightest surface (0-100)
+LOW = 13  # Default value for the darkest line (0-100)
+HIGH = 99  # Default value for the brightest surface (0-100)
 
 # =================================================================
 # GLOBAL CONSTANTS FOR STUDENT AUTOCOMPLETE
@@ -70,11 +70,11 @@ class Laura():
 
         # WRO PID Constants 
         self._pid = {
-            "KP_GYRO": 3.5,
-            "KD_GYRO": 0.2,
-            "KI_GYRO": 0.0005,
-            "KP_GYROPT": 3.5,
-            "KD_GYROPT": 0.68,
+            "KP_GYRO": 3.0,
+            "KD_GYRO": 0.18,
+            "KI_GYRO": 0.0002,
+            "KP_GYROPT": 4.0,
+            "KD_GYROPT": 0.55,
             "KP_GYROLT": 5.0,
             "KD_GYROLT": 0.9,
             "KP_FAST": 0.4,
@@ -83,7 +83,22 @@ class Laura():
             "KD_SLOW": 2.0
         }
 
-        self._hub.system.set_stop_button([Button.BLUETOOTH, Button.RIGHT])
+        # ## Blue robot
+        # self._pid = {
+        #     "KP_GYRO": 1.8,
+        #     "KD_GYRO": 0.35,
+        #     "KI_GYRO": 0.0002,
+        #     "KP_GYROPT": 4.0,
+        #     "KD_GYROPT": 0.4,
+        #     "KP_GYROLT": 5.0,
+        #     "KD_GYROLT": 0.9,
+        #     "KP_FAST": 0.4,
+        #     "KD_FAST": 2.0,
+        #     "KP_SLOW": 0.2,
+        #     "KD_SLOW": 2.0
+        # }
+
+        self._hub.system.set_stop_button([Button.LEFT, Button.RIGHT])
 
         # WRO State Variables
         self._gyro_offset = 0
@@ -242,7 +257,7 @@ class Laura():
         """
         print("\n---- HSV Value ----")
         while True:
-            print("HSV (left): ", self._colour_A.hsv(), "HSV (right): ", self._colour_B.hsv())
+            print("HSV (right): ", self._colour_B.hsv())
             wait(interval)
 
     def port_view_reflected_light(self, interval=100):
@@ -252,9 +267,8 @@ class Laura():
         """
         print("\n---- Reflected Value ----")
         while True:
-            left_colour_normalised = (((self._colour_A.reflection() - LOW) / (HIGH - LOW))) * 100
             right_colour_normalised = (((self._colour_B.reflection() - LOW) / (HIGH - LOW))) * 100
-            print("Reflected (left): ", self._colour_A.reflection(), "| Normalised (left): ", left_colour_normalised, "Reflected (right): ", self._colour_B.reflection(), "| Normalised (right): ", right_colour_normalised)
+            print("Reflected (right): ", self._colour_B.reflection(), "| Normalised (right): ", right_colour_normalised)
             wait(interval)
 
     def port_view_motor_angle(self, interval=100, reset_angle=True):
@@ -586,17 +600,18 @@ class Laura():
 
     def gyro_sensor(self, power, port, threshold, compare=True, angle=0, stop=True):
         self._gyro_move('sensor', threshold, power, angle, stop, self._pid["KP_GYRO"], self._pid["KD_GYRO"], self._pid["KI_GYRO"], 0, 0, 0, compare, port)
+        print(self._get_sensor(port))
 
     def gyro_acc(self, power, distance, angle=0, min_power=40, accel_dist=80, decel_dist=80, stop=True):
         self._gyro_move('acc', distance, power, angle, stop, self._pid["KP_GYRO"], self._pid["KD_GYRO"], self._pid["KI_GYRO"], min_power, accel_dist, decel_dist, None)
 
     def gyro_point_turn(self, angle, stop=True, accel_dist=10, decel_dist=20):
-        self._gyro_turn(angle, None, stop, self._pid["KP_GYROPT"], self._pid["KD_GYROPT"], 40, 90, accel_dist, decel_dist)
-        print(f"Point Turn Gyro: {self._get_gyro_angle()}")
+        self._gyro_turn(angle, None, stop, self._pid["KP_GYROPT"], self._pid["KD_GYROPT"], 45, 90, accel_dist, decel_dist)
+        print(self._get_gyro_angle())
 
     def gyro_lock_turn(self, port, angle, stop=True, accel_dist=2, decel_dist=2):
-        self._gyro_turn(angle, port, stop, self._pid["KP_GYROLT"], self._pid["KD_GYROLT"], 40, 90, decel_dist, decel_dist)
-        print(f"Lock Turn Gyro: {self._get_gyro_angle()}")
+        self._gyro_turn(angle, port, stop, self._pid["KP_GYROLT"], self._pid["KD_GYROLT"], 50, 90, decel_dist, decel_dist)
+        print(self._get_gyro_angle())
 
     # ==========================================
     # LINE FOLLOW
