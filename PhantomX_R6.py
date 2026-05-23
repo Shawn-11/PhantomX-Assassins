@@ -26,49 +26,21 @@ LF_KD_CUSTOM = 0.1
 
 def Route6(laura: Laura):
 
-    print("\n--- Starting Route 5 ---")
+    print("\n--- Starting Route 6 ---")
     routeTimer = StopWatch()
     laura.port_view_battery()
     routeTimer.reset()
     laura.hub_status_light(Color.MAGENTA)
 
     """ Start your code here """
-    laura.wall_square(power=35)
-    laura.adapter_motor_seconds(port= LEFT_ADAPTER , speed= -1000 , duration= 1000 , wait_complete= False)
-    laura.gyro_acc(power= -80 , distance= 550)
-    laura.gyro_point_turn(42)
-    laura.gyro_acc(power= -80 , distance= 90 , angle= 42)
-    laura.gyro_point_turn(angle= -43)
-
-    laura.gyro_acc(power= -70 , distance= 150 , angle= -45 , stop= False)
-    laura.gyro_time(power= -55 , duration= 1200 , angle= -45)
-    laura.adapter_motor_seconds( port= LEFT_ADAPTER , speed= 1000 , duration= 1000)
-
-    laura.gyro_acc( power= 80 , distance= 150 , angle= -45)
-    # # laura.gyro_lock_turn( port= LEFT_DRIVE , angle= 0)
-    laura.encoder_degree( left_power= 70 , right_power= 0 , degree= 90 )
-    laura.gyro_acc( power= 80 , distance= 40)
-    laura.adapter_motor_seconds( port=RIGHT_ADAPTER , speed=1000 , duration= 1200, wait_complete= False)
-    # # laura.gyro_point_turn(angle= 90)
-    laura.encoder_degree( left_power= 70 , right_power= -70 , degree= 175)
-
-    laura.gyro_acc( power= 70 , distance= 90 , angle= 88 , stop= False)
-    laura.gyro_time(power= 50 , duration= 800 , angle= 88)
-    laura.adapter_motor_seconds(port= RIGHT_ADAPTER , speed= -1000 , duration= 1000 )
-    laura.adapter_motor_seconds( port=RIGHT_ADAPTER , speed= 1000 , duration= 1200 , wait_complete= False)
-    wait(600)
-    laura.gyro_acc( power= -80 , distance= 100 , angle= 90 , stop= False)
-    # laura.gyro_point_turn(angle= 200)
-    laura.encoder_degree(left_power= 70 , right_power= -70 , degree= 190 , stop= False)
-    laura.gyro_acc( power= -80 , distance= 570 , angle= 200 , stop= False)
-    laura.gyro_point_turn(angle= 270)
-
+    laura.gyro_acc(-80, 300, stop=False)
+    laura.gyro_lock_turn(LEFT_DRIVE, -30)
 
 
     """ Route end """
     elapsed_time = routeTimer.time() / 1000
     print(f"Total Time: {elapsed_time:.2f} seconds")
-    print("--- Route 5 Complete ---")
+    print("--- Route 6 Complete ---")
 
 ######################## Route testing ########################
 
