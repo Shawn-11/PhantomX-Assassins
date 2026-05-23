@@ -33,8 +33,26 @@ def Route6(laura: Laura):
     laura.hub_status_light(Color.MAGENTA)
 
     """ Start your code here """
-    laura.gyro_acc(-80, 300, stop=False)
-    laura.gyro_lock_turn(LEFT_DRIVE, -30)
+    laura.adapter_motor_seconds(LEFT_ADAPTER, -800, 1500, Stop.COAST, False)
+    laura.wall_square(35)
+    laura.gyro_acc(-80, 260, stop=False)
+    laura.gyro_lock_turn(RIGHT_DRIVE, 40, False)
+    laura.gyro_acc(-80, 400, 40, stop=False)
+    laura.gyro_point_turn(-46)
+    laura.gyro_time(-60, 1400, -46, False)
+    laura.adapter_motor_seconds(LEFT_ADAPTER, 800, 1200, Stop.BRAKE, False)
+    wait(850)
+    laura.gyro_acc(80, 155, -46, stop=False)
+    laura.gyro_lock_turn(LEFT_DRIVE, 90)
+    laura.adapter_motor_seconds(RIGHT_ADAPTER, 1000, 1000)
+    laura.gyro_time(50, 800, 90)
+    laura.adapter_motor_seconds(RIGHT_ADAPTER, -1000, 1000)
+    laura.adapter_motor_seconds(RIGHT_ADAPTER, 1000, 1000, wait_complete=False)
+    wait(700)
+    laura.gyro_acc(-80, 40, 90, stop=False)
+    laura.gyro_acc(-100, 550, 180, stop=False)
+    laura.gyro_acc(-100, 200, 270)
+
 
 
     """ Route end """

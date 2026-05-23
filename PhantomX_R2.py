@@ -45,9 +45,10 @@ def Route2(laura: Laura):
 
     # # Step 2 - Solve mission
 
-    laura.adapter_motor_seconds(LEFT_ADAPTER, speed= 1000 , duration= 1000 , stop_method=Stop.HOLD , wait_complete= False)
+    laura.adapter_motor_seconds(LEFT_ADAPTER, speed= 1000 , duration= 2000 , stop_method=Stop.HOLD , wait_complete= False)
     wait(200)
     laura.adapter_motor_seconds(RIGHT_ADAPTER, speed= 200 , duration= 1200)
+    wait(500)
     
 
     # # Step 3 - Back to base
