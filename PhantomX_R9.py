@@ -46,8 +46,12 @@ def Route9(laura: Laura):
     laura.gyro_degree(60, 230, -90, False)
     laura.gyro_degree(60, 50, -90, True)
     laura.adapter_motor_seconds(port= LEFT_ADAPTER , speed= -1000 , duration= 1200 , wait_complete=False)
-    laura.adapter_motor_seconds(RIGHT_ADAPTER, 1000, 4400, wait_complete=True)
-    
+    laura.adapter_motor_seconds(RIGHT_ADAPTER, 1000, 3000, wait_complete=True)
+    laura.gyro_lock_turn(RIGHT_DRIVE, -56, False)
+    laura.gyro_acc(-80, 700, -56, stop=False)
+    laura.gyro_point_turn(-100)
+    laura.adapter_motor_seconds(RIGHT_ADAPTER, -1000, 2200)
+    laura.gyro_point_turn(0, True, 90, 0)
 
 
     """ Route end """
