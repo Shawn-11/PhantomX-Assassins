@@ -6,7 +6,7 @@ from ACL_FLL_v04_test import *
 ################## Shared and local constants ##################
 
 # Adapter configuration: (LeftPower, RightPower, LeftLimit, RightLimit)
-ROUTE_ADAPTER_POWER = (35, -35, 30, 30)
+ROUTE_ADAPTER_POWER = (-35, -35, 30, 30)
 
 # Route-Specific PID Gains
 STR_KP_CUSTOM = 1.5
@@ -21,7 +21,7 @@ LF_KD_CUSTOM = 0.1
 ######################## Route program ########################
 
 # --- Starting position ---
-# Blue base - Robot right wheel align 1st line from right
+# Blue base - Robot right wheel align 1st line from righ5
 # Mission - Mountain rock
 
 def Route6(laura: Laura):
@@ -33,26 +33,26 @@ def Route6(laura: Laura):
     laura.hub_status_light(Color.MAGENTA)
 
     """ Start your code here """
-    laura.adapter_motor_seconds(LEFT_ADAPTER, -800, 1500, Stop.COAST, False)
-    laura.wall_square(35)
-    laura.gyro_acc(-80, 260, stop=False)
-    laura.gyro_lock_turn(RIGHT_DRIVE, 40, False)
-    laura.gyro_acc(-80, 400, 40, stop=False)
-    laura.gyro_point_turn(-46)
-    laura.gyro_time(-60, 1400, -46, False)
-    laura.adapter_motor_seconds(LEFT_ADAPTER, 800, 1200, Stop.BRAKE, False)
-    wait(850)
-    laura.gyro_acc(80, 155, -46, stop=False)
-    laura.gyro_lock_turn(LEFT_DRIVE, 90)
-    laura.adapter_motor_seconds(RIGHT_ADAPTER, 1000, 1000)
-    laura.gyro_time(50, 800, 90)
-    laura.adapter_motor_seconds(RIGHT_ADAPTER, -1000, 1000)
-    laura.adapter_motor_seconds(RIGHT_ADAPTER, 1000, 1000, wait_complete=False)
-    wait(700)
-    laura.gyro_acc(-80, 40, 90, stop=False)
-    laura.gyro_acc(-100, 550, 180, stop=False)
-    laura.gyro_acc(-100, 200, 270)
+    laura.wall_square(power=35)
+    laura.adapter_motor_seconds(port= LEFT_ADAPTER , speed= 1000 , duration= 1000 , wait_complete= False)
+    laura.move_curve_angle(-500,-25,-800,400,Stop.NONE,True)
+    laura.gyro_acc(-80,405,25)
+    wait(100)
+    laura.encoder_curve(-80,0,300)
+    laura.gyro_time(-55,1500,-50)
+    laura.adapter_motor_seconds(port= LEFT_ADAPTER , speed= -1000 , duration= 750 , wait_complete= True)
+    laura.adapter_motor_seconds(port= LEFT_ADAPTER , speed= -1000 , duration= 600 , wait_complete= False)
+    laura.gyro_acc(80,150,-50)
+    laura.adapter_motor_seconds(port= RIGHT_ADAPTER , speed= 1000 , duration= 1000 , wait_complete= False)
 
+    laura.encoder_curve(80,0,590)
+    laura.gyro_time(35,550,90)
+    laura.adapter_motor_seconds(port= RIGHT_ADAPTER , speed= -1000 , duration= 1000 , wait_complete=True)
+    laura.adapter_motor_seconds(port= RIGHT_ADAPTER , speed= 1000 , duration= 1000 , wait_complete=True)
+    laura.gyro_acc(-80,30,90)
+    laura.encoder_curve(0,-90,400)
+
+    laura.move_curve_angle(-405,-90,-800,400,Stop.BRAKE,True)
 
 
     """ Route end """
