@@ -98,10 +98,10 @@ def Route4(laura: Laura): # 16 sec
     laura.encoder_time(left_power= 50 , right_power= -45  , duration= 500 )
 
 
-    laura.encoder_degree(left_power= -70 , right_power= 70 , degree= 250 , stop= False)
-    laura.gyro_acc(power= 80 , distance= 400 , angle= -30 , stop= False)
-    laura.gyro_acc(power= 80 , distance= 300 , stop= False)
-    laura.gyro_point_turn(angle= -87)
+    laura.encoder_degree(left_power= -70 , right_power= 70 , degree= 230 , stop= False)
+    laura.gyro_acc(power= 80 , distance= 330 , angle= -30 , stop= False)
+    laura.gyro_acc(power= 80 , distance= 380)
+    # laura.gyro_point_turn(angle= -87)
 
 
     """ Route end """

@@ -52,8 +52,8 @@ def Route5(laura: Laura):
     wait(200)
     laura.gyro_degree(power= -50 , degree= 260 , angle= -93 , stop= False)
     laura.gyro_point_turn(angle= 15 , stop= False)
-    laura.gyro_acc(power= 80 , distance= 450 , angle= 15 , stop= False)
-    laura.gyro_acc(power= 80 , distance= 240 )
+    laura.gyro_acc(power= 100 , distance= 450 , angle= 15 , stop= False)
+    laura.gyro_acc(130, 240, 0, 80, 0)
     # laura.gyro_point_turn(angle= -180 , stop= False)
     # laura.gyro_acc(power= -80 , distance= 300 , angle= -180)
     

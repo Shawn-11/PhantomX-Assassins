@@ -36,7 +36,8 @@ def Route1(laura: Laura):
     laura.wall_square()
     # laura.gyro_acc(power= 60 , distance= 80 , angle= 0 , decel_dist=0 , stop=False) 
     # laura.move_curve_angle(20,-42,500,600,Stop.BRAKE,100)
-    laura.gyro_lock_turn(port= RIGHT_DRIVE , angle= -42 )
+    laura.encoder_curve(0,70,185)
+    # laura.gyro_lock_turn(port= RIGHT_DRIVE , angle= -42 )
     laura.gyro_acc(power= 85 , distance= 280 , angle= -43 , decel_dist=0 , stop=False)
     laura.gyro_time(power= 55 , duration= 820 , angle= -43)
 
@@ -48,7 +49,7 @@ def Route1(laura: Laura):
 
     # # Step 3 - Pull market back
     laura.gyro_acc(power= -80 , distance= 60 , angle= -42 , stop= False)
-    laura.gyro_time(power= -60 , duration= 700 , angle= -42)
+    laura.gyro_time(power= -60 , duration= 620 , angle= -42)
     laura.adapter_motor_seconds(RIGHT_ADAPTER,speed= 850 , duration= 700, stop_method=Stop.HOLD, wait_complete=False)
     laura.gyro_acc(power= 45 , distance= 10 , angle= -42)
     laura.adapter_motor_seconds(LEFT_ADAPTER, speed= 600 , duration= 800, wait_complete=False)
