@@ -18,8 +18,8 @@ import PhantomX_R3 as route3 #            #  10 sec         #
 import PhantomX_R4 as route4 #            #  16 sec         #   
 import PhantomX_R5 as route5 #            #  13 sec         #   12 sec
 import PhantomX_R6 as route6 #            #  16 sec         #   16 sec
-import PhantomX_R7 as route7 #            #   8 see         #    8 sec
-import PhantomX_R8 as route8 #            #   9 sec         #
+import PhantomX_R7 as route7 #            #   6 see         #    8 sec
+import PhantomX_R8 as route8 #            #   8 sec         #
 import PhantomX_R9 as route9 #            #  15 sec
 
 # List of available route modules

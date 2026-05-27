@@ -6,7 +6,7 @@ from ACL_FLL_v04_test import *
 ################## Shared and local constants ##################
 
 # Adapter configuration: (LeftPower, RightPower, LeftLimit, RightLimit)
-ROUTE_ADAPTER_POWER = (-35, -35, 30, 30)
+ROUTE_ADAPTER_POWER = (35, -35, 30, 30)
 
 # Route-Specific PID Gains
 STR_KP_CUSTOM = 1.5
@@ -34,26 +34,28 @@ def Route6(laura: Laura):
 
     """ Start your code here """
     laura.wall_square(power=35)
-    laura.adapter_motor_seconds(port= LEFT_ADAPTER , speed= 1000 , duration= 1000 , wait_complete= False)
-    laura.move_curve_angle(-500,-25,-800,400,Stop.NONE,True)
-    laura.gyro_acc(-80,405,25)
+    laura.adapter_motor_seconds(port= LEFT_ADAPTER , speed= -1000 , duration= 1000 , wait_complete= False)
+    # laura.move_curve_angle(-500,-25,-800,400,Stop.NONE,True)
+    laura.gyro_acc(-80,250)
+    laura.encoder_curve(0,-80,200,stop=False)
+    laura.gyro_acc(-80,340,30)
     wait(100)
-    laura.encoder_curve(-80,0,300)
+    laura.encoder_curve(-80,0,320)
     laura.gyro_time(-55,1500,-50)
-    laura.adapter_motor_seconds(port= LEFT_ADAPTER , speed= -1000 , duration= 750 , wait_complete= True)
-    laura.adapter_motor_seconds(port= LEFT_ADAPTER , speed= -1000 , duration= 600 , wait_complete= False)
-    laura.gyro_acc(80,150,-50)
+    laura.adapter_motor_seconds(port= LEFT_ADAPTER , speed= 1000 , duration= 850 , wait_complete= True)
+    laura.adapter_motor_seconds(port= LEFT_ADAPTER , speed= 1000 , duration= 500 , wait_complete= False)
+    laura.gyro_acc(80,155,-50)
     laura.adapter_motor_seconds(port= RIGHT_ADAPTER , speed= 1000 , duration= 1000 , wait_complete= False)
 
     laura.encoder_curve(80,0,590)
-    laura.gyro_time(35,550,90)
+    laura.gyro_time(35,650,90)
     laura.adapter_motor_seconds(port= RIGHT_ADAPTER , speed= -1000 , duration= 1000 , wait_complete=True)
     laura.adapter_motor_seconds(port= RIGHT_ADAPTER , speed= 1000 , duration= 1000 , wait_complete=True)
-    laura.gyro_acc(-80,30,90)
-    laura.encoder_curve(0,-90,400)
-
-    laura.move_curve_angle(-405,-90,-800,400,Stop.BRAKE,True)
-
+    laura.gyro_acc(-80,50,90,stop=False)
+    laura.encoder_curve(80,-80,200,stop=False)
+    laura.gyro_acc(-80,480,180)
+    laura.encoder_degree(0,-80,200)
+    # laura.gyro_acc(-80,100,-90)
 
     """ Route end """
     elapsed_time = routeTimer.time() / 1000

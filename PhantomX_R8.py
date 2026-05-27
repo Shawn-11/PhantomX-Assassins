@@ -34,18 +34,18 @@ def Route8(laura: Laura):
 
     """ Start your code here """
     laura.wall_square()
-    laura.gyro_acc(power= 70 , distance= 340)
-    laura.gyro_lock_turn(port= LEFT_DRIVE , angle= 63)
-    laura.gyro_acc(power= 70 , distance= 60 ,angle= 63 , stop= False)
+    laura.gyro_acc(power= 70 , distance= 340, stop=False)
+    laura.gyro_lock_turn(port= LEFT_DRIVE , angle= 61)
+    laura.gyro_acc(power= 70 , distance= 60 ,angle= 61 , stop= False)
     laura.adapter_motor_seconds(port= LEFT_ADAPTER , speed= 1000 ,duration= 1500 , wait_complete= False)
-    laura.gyro_time(power= 40 ,duration= 800 , angle= 63 )
-    wait(500)
+    laura.gyro_acc(60, 110, 61)
+    wait(700)
     laura.adapter_motor_seconds(port= LEFT_ADAPTER , speed= -1000 , duration= 1500 , wait_complete= False)
-    # laura.gyro_time(-40,800,62,stop=True)
-    laura.gyro_acc(power= -80 , distance= 150 ,angle= 63 , stop= False)
-    laura.gyro_point_turn(angle= 35 , stop= False)
-    laura.gyro_acc(power= -80 , distance= 230 , angle= 35 , stop= False)
-    laura.gyro_lock_turn(port= RIGHT_DRIVE , angle= 90)
+    wait(200)
+    laura.gyro_acc(power= -80 , distance= 150 ,angle= 61, stop= False)
+    laura.gyro_point_turn(35, False, 20, 15)
+    laura.gyro_acc(power= -100 , distance= 230 , angle= 35 , stop= False)
+    laura.gyro_lock_turn(RIGHT_DRIVE , 90, True, 90, 0)
 
     """ Route end """
     elapsed_time = routeTimer.time() / 1000

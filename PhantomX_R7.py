@@ -6,7 +6,7 @@ from ACL_FLL_v04_test import *
 ################## Shared and local constants ##################
 
 # Adapter configuration: (LeftPower, RightPower, LeftLimit, RightLimit)
-ROUTE_ADAPTER_POWER = (0, -40, 30, 30)
+ROUTE_ADAPTER_POWER = (40, 0, 30, 30)
 
 # Route-Specific PID Gains
 STR_KP_CUSTOM = 1.5
@@ -33,13 +33,14 @@ def Route7(laura: Laura):
     laura.hub_status_light(Color.MAGENTA)
 
     """ Start your code here """
-    laura.wall_square()
-    laura.encoder_acc(left_power= 80 , right_power= 75 , total_degree= 1000 , stop= False)
-    laura.encoder_time(left_power= 40 , right_power= 38 ,duration= 1100 )
-    laura.adapter_motor_seconds(port= RIGHT_ADAPTER , speed= 1000 , duration= 800)
+    # laura.wall_square()
+    laura.encoder_acc(left_power= 80 , right_power= 75 , total_degree= 800 , stop= False)
+    laura.encoder_acc(left_power= 60 , right_power= 52 , total_degree= 150 , stop= False)
+    laura.encoder_time(left_power= 40 , right_power= 33 ,duration= 800)
+    laura.adapter_motor_seconds(port= LEFT_ADAPTER , speed= -1000 , duration= 800)
 
-    laura.gyro_acc(power= -80 , distance= 400 , stop= False)
-    laura.gyro_lock_turn(port= LEFT_DRIVE , angle= -88)
+    laura.encoder_acc(-80, -80, 900, stop=False)
+    laura.encoder_acc(-90, 0, 200)
 
 
 

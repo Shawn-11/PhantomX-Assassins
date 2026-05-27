@@ -38,7 +38,7 @@ def Route5(laura: Laura):
     laura.gyro_acc(-90,600,decel_dist=130,stop=False)
     laura.gyro_lock_turn(port= RIGHT_DRIVE , angle= 45 , stop= False)
     laura.gyro_lock_turn(port= LEFT_DRIVE ,angle= 0 , stop= False)
-    laura.gyro_acc(power= -70 , distance= 55 , stop= True)
+    laura.gyro_acc(power= -70 , distance= 85 , stop= True)
     # laura.gyro_time(power= -45 , duration= 1000)
     # laura.gyro_acc(power= 50 , distance= 110,decel_dist=130,stop=True)
     laura.adapter_motor_seconds(RIGHT_ADAPTER,-800,600,wait_complete=False)

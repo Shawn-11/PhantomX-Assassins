@@ -98,7 +98,7 @@ class Laura():
         #     "KD_SLOW": 2.0
         # }
 
-        self._hub.system.set_stop_button([Button.LEFT, Button.RIGHT])
+        self._hub.system.set_stop_button([Button.BLUETOOTH, Button.RIGHT])
 
         # WRO State Variables
         self._gyro_offset = 0
