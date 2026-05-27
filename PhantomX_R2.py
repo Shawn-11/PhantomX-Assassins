@@ -45,15 +45,17 @@ def Route2(laura: Laura):
 
     # # Step 2 - Solve mission
 
-    laura.adapter_motor_seconds(LEFT_ADAPTER, speed= 1000 , duration= 2000 , stop_method=Stop.HOLD , wait_complete= False)
-    wait(200)
-    laura.adapter_motor_seconds(RIGHT_ADAPTER, speed= 200 , duration= 1200)
+    laura.adapter_motor_seconds(LEFT_ADAPTER, speed= 1000 , duration= 2000, wait_complete= False)
+    wait(300)
+    laura.adapter_motor_seconds(RIGHT_ADAPTER, speed= 300 , duration= 1400)
     wait(500)
     
 
     # # Step 3 - Back to base
-    laura.gyro_acc(power= -70 , distance= 120 ,angle= 46 , decel_dist= 0 , stop= False)
     laura.adapter_motor_seconds(LEFT_ADAPTER,speed= -1000 , duration= 800 , wait_complete= False)
+    wait(200)
+    laura.gyro_acc(power= -70 , distance= 120 ,angle= 46 , decel_dist= 0 , stop= False)
+
     laura.gyro_point_turn(angle= -20 , stop= False)
     laura.gyro_acc(power= -90 , distance= 670 , angle= -20,stop=False)
     laura.gyro_lock_turn(RIGHT_DRIVE,angle= 0)

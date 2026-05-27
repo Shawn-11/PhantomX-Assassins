@@ -35,8 +35,8 @@ def Route7(laura: Laura):
     """ Start your code here """
     # laura.wall_square()
     laura.encoder_acc(left_power= 80 , right_power= 75 , total_degree= 800 , stop= False)
-    laura.encoder_acc(left_power= 60 , right_power= 52 , total_degree= 150 , stop= False)
-    laura.encoder_time(left_power= 40 , right_power= 33 ,duration= 800)
+    laura.encoder_acc(left_power= 60 , right_power= 52 , total_degree= 130 , stop= False)
+    laura.encoder_time(left_power= 40 , right_power= 33 ,duration= 1000)
     laura.adapter_motor_seconds(port= LEFT_ADAPTER , speed= -1000 , duration= 800)
 
     laura.encoder_acc(-80, -80, 900, stop=False)
