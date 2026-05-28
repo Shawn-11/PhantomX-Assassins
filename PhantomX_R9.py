@@ -53,7 +53,7 @@ def Route9(laura: Laura):
     # laura.gyro_point_turn(-160)
     # laura.adapter_motor_seconds(RIGHT_ADAPTER, -1000, 2200)
     # laura.gyro_point_turn(0, True, 90, 0)
-    laura.gyro_acc(power= -60 , distance= 100 , angle= -90, stop=False)
+    laura.gyro_acc(power= -70 , distance= 100 , angle= -90, stop=False)
     laura.gyro_point_turn(angle= -230, stop=False)
     laura.gyro_acc(power= 80 , distance= 320 , angle= -230, stop=False)
     laura.adapter_motor_seconds(port= RIGHT_ADAPTER , speed= -1000 , duration= 3000 ,wait_complete=False)

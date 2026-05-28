@@ -35,7 +35,7 @@ def Route2(laura: Laura):
     """ Start your code here """
     # Step 1 - Go to forge
     laura.wall_square()
-    laura.gyro_lock_turn(port= RIGHT_DRIVE , angle= -25 )
+    laura.gyro_lock_turn(port= RIGHT_DRIVE , angle= -25)
     laura.gyro_acc(power= 90 , distance= 700 , angle= -25 , decel_dist=120)
     laura.gyro_point_turn(angle= 43)   # < take noted this angle
     laura.adapter_motor_seconds(RIGHT_ADAPTER, speed= -200 , duration= 1200,stop_method=Stop.BRAKE,wait_complete=False)
