@@ -38,7 +38,7 @@ def Route6(laura: Laura):
     laura.gyro_acc(-80, 260, stop=False)
     laura.gyro_lock_turn(RIGHT_DRIVE, 40, False)
     laura.gyro_acc(-80, 400, 40, stop=False)
-    laura.gyro_point_turn(-46, True, 5, 30)
+    laura.gyro_point_turn(-46, True, 3, 40)
     laura.gyro_time(-60, 1400, -46, False)
     laura.adapter_motor_seconds(LEFT_ADAPTER, 800, 1200, Stop.BRAKE, False)
     wait(850)

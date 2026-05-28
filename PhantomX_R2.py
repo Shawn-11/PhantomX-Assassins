@@ -35,8 +35,8 @@ def Route2(laura: Laura):
     """ Start your code here """
     # Step 1 - Go to forge
     laura.wall_square()
-    laura.gyro_lock_turn(port= RIGHT_DRIVE , angle= -22 )
-    laura.gyro_acc(power= 90 , distance= 720 , angle= -22 , decel_dist=120)
+    laura.gyro_lock_turn(port= RIGHT_DRIVE , angle= -25 )
+    laura.gyro_acc(power= 90 , distance= 700 , angle= -25 , decel_dist=120)
     laura.gyro_point_turn(angle= 43)   # < take noted this angle
     laura.adapter_motor_seconds(RIGHT_ADAPTER, speed= -200 , duration= 1200,stop_method=Stop.BRAKE,wait_complete=False)
     wait(600)
@@ -45,14 +45,14 @@ def Route2(laura: Laura):
 
     # # Step 2 - Solve mission
 
-    laura.adapter_motor_seconds(LEFT_ADAPTER, speed= 1000 , duration= 2000, wait_complete= False)
-    wait(400)
+    laura.adapter_motor_seconds(LEFT_ADAPTER, speed= 1000 , duration= 1800, wait_complete= False)
+    wait(100)
     laura.adapter_motor_seconds(RIGHT_ADAPTER, speed= 380 , duration= 1300)
     
     
 
     # # Step 3 - Back to base
-    laura.adapter_motor_seconds(LEFT_ADAPTER,speed= -1000 , duration= 300 , wait_complete= True)
+    laura.adapter_motor_seconds(LEFT_ADAPTER,speed= -1000 , duration= 150 , wait_complete= True)
     laura.adapter_motor_seconds(LEFT_ADAPTER,speed= -1000 , duration= 900 , wait_complete= False)
 
     laura.gyro_acc(power= -70 , distance= 120 ,angle= 46 , decel_dist= 0 , stop= False)

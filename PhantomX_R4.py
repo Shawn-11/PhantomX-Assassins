@@ -86,7 +86,7 @@ def Route4(laura: Laura): # 16 sec
     laura.gyro_acc(power= -80 , distance= 100 , angle= 90 , stop= False )
     
     laura.gyro_time(power= -40 , duration= 500 , angle= 90)
-    laura.adapter_motor_seconds(port= LEFT_ADAPTER , speed= -1000 , duration= 1300)
+    laura.adapter_motor_seconds(port= LEFT_ADAPTER , speed= -1000 , duration= 1800)
     laura.adapter_motor_seconds(port= LEFT_ADAPTER , speed= 1000 , duration= 600)
     laura.gyro_sensor(power= 50 , port= LEFT_COLOUR , threshold= 15 , angle= 90)
 
