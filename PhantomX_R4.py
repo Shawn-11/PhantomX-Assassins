@@ -34,9 +34,8 @@ def Route4a(laura: Laura): # 21 sec
 
     """ Start your code here """
     laura.wall_square()
-    laura.gyro_acc(power= 80 , distance= 730 , stop= False)
+    laura.gyro_acc(power= 80 , distance= 1100 , stop= True)
     laura.line_follow_degree(direction= 1 , power= 50 ,port= LEFT_COLOUR ,degree= 80 , stop= False)
-
     laura.line_follow_detect_reflected(direction= 1 , power= 60 ,port= LEFT_COLOUR , detect_port= RIGHT_COLOUR , threshold= 15  , stop= False)
     laura.line_follow_degree(direction= 1 , power= 50 ,port= LEFT_COLOUR ,degree= 100 , stop= False)
     laura.gyro_acc(power= 70 , distance= 130)
@@ -79,13 +78,12 @@ def Route4(laura: Laura): # 16 sec
 
     """ Start your code here """
     laura.wall_square()
-    laura.gyro_acc(power= 80 , distance= 730 , stop= False)
-    laura.line_follow_degree(direction= 1 , power= 50 ,port= LEFT_COLOUR ,degree= 80 , stop= False)
-    laura.line_follow_detect_reflected(direction= 1 , power= 50 ,port= LEFT_COLOUR , detect_port= RIGHT_COLOUR , threshold= 30)
-    laura.encoder_degree(left_power= 70 , right_power= -70 , degree= 170)
-    laura.gyro_acc(power= -80 , distance= 100 , angle= 90 , stop= False )
-    
-    laura.gyro_time(power= -40 , duration= 500 , angle= 90)
+    laura.gyro_acc(power= 80 , distance= 800 , stop= False)
+    laura.line_follow_degree(direction= 1 , power= 40 ,port= LEFT_COLOUR ,degree= 90 , stop= False)
+    laura.line_follow_detect_reflected(direction= 1 , power= 40 ,port= LEFT_COLOUR , detect_port= RIGHT_COLOUR , threshold= 30)
+    laura.gyro_point_turn(90)
+    laura.gyro_acc(-70,80,90,stop=False)
+    laura.gyro_time(power= -40 , duration= 600 , angle= 90)
     laura.adapter_motor_seconds(port= LEFT_ADAPTER , speed= -1000 , duration= 1800)
     laura.adapter_motor_seconds(port= LEFT_ADAPTER , speed= 1000 , duration= 600)
     laura.gyro_sensor(power= 50 , port= LEFT_COLOUR , threshold= 15 , angle= 90)
@@ -100,7 +98,7 @@ def Route4(laura: Laura): # 16 sec
 
     laura.encoder_degree(left_power= -70 , right_power= 70 , degree= 230 , stop= False)
     laura.gyro_acc(power= 80 , distance= 330 , angle= -30 , stop= False)
-    laura.gyro_acc(power= 80 , distance= 380)
+    laura.gyro_acc(power= 80 , distance= 395)
     # laura.gyro_point_turn(angle= -87)
 
 
